@@ -9,10 +9,10 @@ func Ternary[T any](condition bool, a, b T) T {
 	return b
 }
 
-// TernaryNil, 如果 a 为 nil, 返回 b, 否则返回 a
-func TernaryNil[T any](a, b *T) *T {
+// TernaryNil, 如果 a 为 nil, 返回 fc() 的返回值, 否则返回 a
+func TernaryNil[T any](a *T, fc func() *T) *T {
 	if a == nil {
-		return b
+		return fc()
 	}
 	return a
 }
