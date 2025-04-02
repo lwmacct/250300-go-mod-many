@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/lwmacct/250300-go-many/pkg/many"
+	"github.com/lwmacct/250300-go-mod-many/pkg/many"
 )
 
 func main() {
