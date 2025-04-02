@@ -10,7 +10,7 @@ import (
 // To 是一个通用的类型转换函数，使用泛型将任意值转换为目标类型T
 // T可以是基础类型如bool、string、int、float等的近似类型
 
-func To[T any](v interface{}) T {
+func To[T any](v any) T {
 	var zero T
 	switch any(zero).(type) {
 	case bool:
@@ -49,7 +49,7 @@ func To[T any](v interface{}) T {
 // 以下是内部辅助函数，不对外暴露
 
 // 通用的 float64 转换函数
-func toFloat64(v interface{}) float64 {
+func toFloat64(v any) float64 {
 	switch val := v.(type) {
 	case string:
 		if f, err := strconv.ParseFloat(val, 64); err == nil {
@@ -75,7 +75,7 @@ func toFloat64(v interface{}) float64 {
 }
 
 // 将各种整型统一转为 int64
-func toInt64(v interface{}) int64 {
+func toInt64(v any) int64 {
 	switch val := v.(type) {
 	case int:
 		return int64(val)
@@ -109,7 +109,7 @@ func toInt64(v interface{}) int64 {
 }
 
 // 将各种无符号整型统一转为 uint64
-func toUint64(v interface{}) uint64 {
+func toUint64(v any) uint64 {
 	switch val := v.(type) {
 	case uint:
 		return uint64(val)
@@ -152,7 +152,7 @@ func toUint64(v interface{}) uint64 {
 	}
 }
 
-func toBool(v interface{}) bool {
+func toBool(v any) bool {
 	switch val := v.(type) {
 	case string:
 		return val == "1" || val == "true" || val == "True"
@@ -167,15 +167,15 @@ func toBool(v interface{}) bool {
 	}
 }
 
-func toInt(v interface{}) int {
+func toInt(v any) int {
 	return int(toInt64(v))
 }
 
-func toUint(v interface{}) uint {
+func toUint(v any) uint {
 	return uint(toUint64(v))
 }
 
-func toString(v interface{}) string {
+func toString(v any) string {
 	switch val := v.(type) {
 	case string:
 		return val

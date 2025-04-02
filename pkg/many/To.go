@@ -10,7 +10,7 @@ import (
 
 // To 是一个通用的类型转换函数，使用泛型将任意值转换为目标类型T
 // T可以是基础类型如bool、string、int、float等的近似类型
-func To[T any](v interface{}) T {
+func To[T any](v any) T {
 	var zero T
 
 	// 获取目标类型
@@ -52,7 +52,7 @@ func To[T any](v interface{}) T {
 }
 
 // ToE 带错误返回的类型转换函数
-func ToE[T any](v interface{}) (T, error) {
+func ToE[T any](v any) (T, error) {
 	var zero T
 	result := To[T](v)
 
@@ -67,7 +67,7 @@ func ToE[T any](v interface{}) (T, error) {
 // 以下是内部辅助函数，不对外暴露
 
 // toFloat64 将各种类型转换为float64
-func toFloat64(v interface{}) float64 {
+func toFloat64(v any) float64 {
 	if v == nil {
 		return 0
 	}
@@ -118,7 +118,7 @@ func toFloat64(v interface{}) float64 {
 }
 
 // toInt64 将各种类型转换为int64
-func toInt64(v interface{}) int64 {
+func toInt64(v any) int64 {
 	if v == nil {
 		return 0
 	}
@@ -179,7 +179,7 @@ func toInt64(v interface{}) int64 {
 }
 
 // toUint64 将各种类型转换为uint64
-func toUint64(v interface{}) uint64 {
+func toUint64(v any) uint64 {
 	if v == nil {
 		return 0
 	}
@@ -258,7 +258,7 @@ func toUint64(v interface{}) uint64 {
 }
 
 // toBool 将各种类型转换为bool
-func toBool(v interface{}) bool {
+func toBool(v any) bool {
 	if v == nil {
 		return false
 	}
@@ -303,17 +303,17 @@ func toBool(v interface{}) bool {
 }
 
 // toInt 将各种类型转换为int
-func toInt(v interface{}) int {
+func toInt(v any) int {
 	return int(toInt64(v))
 }
 
 // toUint 将各种类型转换为uint
-func toUint(v interface{}) uint {
+func toUint(v any) uint {
 	return uint(toUint64(v))
 }
 
 // toString 将各种类型转换为string
-func toString(v interface{}) string {
+func toString(v any) string {
 	if v == nil {
 		return ""
 	}

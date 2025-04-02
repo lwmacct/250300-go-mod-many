@@ -9,7 +9,7 @@ import (
 func TestToBool(t *testing.T) {
 	tests := []struct {
 		name     string
-		input    interface{}
+		input    any
 		expected bool
 	}{
 		{"布尔值true", true, true},
@@ -43,7 +43,7 @@ func TestToBool(t *testing.T) {
 func TestToString(t *testing.T) {
 	tests := []struct {
 		name     string
-		input    interface{}
+		input    any
 		expected string
 	}{
 		{"字符串", "hello", "hello"},
@@ -68,7 +68,7 @@ func TestToString(t *testing.T) {
 func TestToInt(t *testing.T) {
 	tests := []struct {
 		name     string
-		input    interface{}
+		input    any
 		expected int
 	}{
 		{"整数", 123, 123},
@@ -104,7 +104,7 @@ func TestToInt(t *testing.T) {
 func TestToFloat64(t *testing.T) {
 	tests := []struct {
 		name     string
-		input    interface{}
+		input    any
 		expected float64
 	}{
 		{"整数", 123, 123.0},
@@ -130,7 +130,7 @@ func TestToFloat64(t *testing.T) {
 func TestToUint(t *testing.T) {
 	tests := []struct {
 		name     string
-		input    interface{}
+		input    any
 		expected uint
 	}{
 		{"整数正数", 123, 123},
@@ -158,7 +158,7 @@ func TestToUint(t *testing.T) {
 func TestToE(t *testing.T) {
 	tests := []struct {
 		name          string
-		input         interface{}
+		input         any
 		expectedValue int
 		expectError   bool
 	}{
@@ -189,7 +189,7 @@ func TestJsonNumber(t *testing.T) {
 	tests := []struct {
 		name     string
 		typ      string
-		expected interface{}
+		expected any
 	}{
 		{"json.Number转int", "int", 123},
 		{"json.Number转float64", "float64", 123.45},

@@ -101,7 +101,7 @@ func testEdgeCases() {
 	}
 
 	// 5. nil值转换
-	var nilValue interface{} = nil
+	var nilValue any = nil
 	fmt.Println("\nnil值转换: ")
 	fmt.Printf("  nil 转 string: %q\n", many.To[string](nilValue))
 	fmt.Printf("  nil 转 int: %d\n", many.To[int](nilValue))
@@ -111,7 +111,7 @@ func testEdgeCases() {
 
 // 测试错误处理
 func testErrorHandling() {
-	testValues := []interface{}{
+	testValues := []any{
 		"非数字",
 		"abc123",
 		struct{ Name string }{"测试"},
