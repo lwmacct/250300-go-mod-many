@@ -1,1 +1,4 @@
-# 250300-go-mod-many
+# 如何使用
+```shell
+task -a
+```
